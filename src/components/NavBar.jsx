@@ -1,26 +1,23 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
+import * as api from "../utils/api";
 
 class NavBar extends Component {
   state = {
-    topics: [
-      {
-        slug: "coding",
-        description: "Code is love, code is life"
-      },
-      {
-        slug: "football",
-        description: "FOOTIE!"
-      },
-      {
-        slug: "cooking",
-        description: "Hey good looking, what you got cooking?"
-      }
-    ],
+    topics: [],
     isLoading: true
   };
+  componentDidMount() {
+    this.fetchTopics();
+  }
+  fetchTopics() {
+    api.getAllTopics().then(topics => {
+      this.setState({ topics, isLoading: false });
+    });
+  }
+
   render() {
-    if (this.state.NavBar) return <h2>Loading</h2>;
+    if (this.state.isLoading) return <h2>Loading</h2>;
     return (
       <section className="Nav-bar">
         {this.state.topics.map(topic => {
