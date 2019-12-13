@@ -6,3 +6,9 @@ exports.getAllTopics = () => {
     return data.topics;
   });
 };
+
+exports.getArticles = () => {
+  return axios.get(`${urlStart}/articles`).then(({ data }) => {
+    return data.articles;
+  });
+};
