@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../utils/api";
+import Loader from "./Loader";
 
 class NavBar extends Component {
   state = {
@@ -17,7 +18,7 @@ class NavBar extends Component {
   }
 
   render() {
-    if (this.state.isLoading) return <h2>Loading</h2>;
+    if (this.state.isLoading) return <Loader />;
     return (
       <section className="Nav-bar">
         {this.state.topics.map(topic => {
