@@ -1,15 +1,29 @@
 import React, { Component } from "react";
 
 class CommentForm extends Component {
-  handleSubmit = () => {
-    this.props.updateComments();
+  state = {
+    comment: {
+      votes: 0,
+      author: "USERNAME_HERE",
+      created_at: "JUST NOW",
+      body: ""
+    }
+  };
+  handleSubmit = event => {
+    event.preventDefault();
+    this.props.addComment(this.state.comment);
+  };
+  handleChange = event => {
+    const comment = { ...this.state.comment };
+    comment.body = event.target.value;
+    this.setState({ comment });
   };
   render() {
     return (
       <form className="Comment-form">
         <h5>New Comment:</h5>
-        <textarea cols={200}></textarea>
-        <button>Submit</button>
+        <textarea onChange={this.handleChange} cols={200}></textarea>
+        <button onClick={this.handleSubmit}>Submit</button>
       </form>
     );
   }

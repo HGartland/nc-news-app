@@ -14,17 +14,17 @@ class CommentsList extends Component {
       this.setState({ comments, isLoading: false });
     });
   }
-  addComments = newComment => {
+  addComment = newComment => {
     const newComments = [newComment, ...this.state.comments];
-    this.setState({ comments: newComments });
+    this.setState({ comments: newComments, isLoading: false });
   };
   render() {
     if (this.state.isLoading) return <Loader />;
     return (
       <ul className="Comments-list">
         Comments:{" "}
-        {this.state.comments.map(comment => {
-          return <CommentCard {...comment} />;
+        {this.state.comments.map((comment, index) => {
+          return <CommentCard {...comment} key={index} />;
         })}
         <CommentForm addComment={this.addComment} />
       </ul>
