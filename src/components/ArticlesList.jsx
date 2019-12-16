@@ -8,8 +8,13 @@ class ArticlesList extends Component {
   componentDidMount() {
     this.fetchArticles();
   }
+  componentDidUpdate(prevProps) {
+    if (this.props.topic !== prevProps.topic) {
+      this.fetchArticles();
+    }
+  }
   fetchArticles = () => {
-    api.getArticles().then(articles => {
+    api.getArticles(this.props.topic).then(articles => {
       this.setState({ articles, isLoading: false });
     });
   };

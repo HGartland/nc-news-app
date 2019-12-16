@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "@reach/router";
 
 const ArticleCard = ({
   title,
@@ -6,11 +7,14 @@ const ArticleCard = ({
   comments_count,
   created_at,
   author,
-  votes
+  votes,
+  article_id
 }) => {
   return (
-    <section>
-      <h4>{title}</h4>
+    <article className="Article-card">
+      <Link to={`/articles/${article_id}`}>
+        <h4>{title}</h4>
+      </Link>
       <p>
         in {topic}, score: {votes}
       </p>
@@ -18,7 +22,7 @@ const ArticleCard = ({
         created by: {author} on {created_at}
       </h5>
       <p>Comments:{comments_count}</p>
-    </section>
+    </article>
   );
 };
 
