@@ -32,3 +32,22 @@
   border-style: solid;
   background-color: white;
 }
+.Article-sorter {
+  border-color: #6c7079;
+  border-width: 2px;
+  border-style: solid;
+  background-color: white;
+}
+
+.Comments-list {
+  border-color: #6c7079;
+  border-width: 2px;
+  border-style: solid;
+  background-color: white;
+}
+.Comment-form {
+  border-color: #6c7079;
+  border-width: 4px;
+  border-style: solid;
+  background-color: rgb(245, 237, 237);
+}
