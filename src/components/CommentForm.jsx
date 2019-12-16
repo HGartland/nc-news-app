@@ -27,7 +27,7 @@ class CommentForm extends Component {
         <textarea
           onChange={this.handleChange}
           default={this.state.comment}
-          cols={200}
+          cols={190}
         ></textarea>
         <button onClick={this.handleSubmit}>Submit</button>
       </form>

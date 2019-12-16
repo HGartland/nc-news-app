@@ -18,13 +18,23 @@ class CommentsList extends Component {
     const newComments = [newComment, ...this.state.comments];
     this.setState({ comments: newComments, isLoading: false });
   };
+  deleteComment = comment_id => {
+    console.log(comment_id);
+  };
   render() {
     if (this.state.isLoading) return <Loader />;
     return (
       <ul className="Comments-list">
         Comments:{" "}
-        {this.state.comments.map((comment, index) => {
-          return <CommentCard {...comment} key={index} />;
+        {this.state.comments.map(comment => {
+          return (
+            <CommentCard
+              {...comment}
+              deleteComment={this.deleteComment}
+              key={comment.comment_id}
+              username={this.props.username}
+            />
+          );
         })}
         <CommentForm
           username={this.props.username}

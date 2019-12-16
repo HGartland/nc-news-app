@@ -38,3 +38,7 @@ exports.postComment = (article_id, newComment) => {
     })
     .catch(console.dir);
 };
+
+exports.deleteComment = comment_id => {
+  return axios.delete(`${urlStart}/comments/${comment_id}`).catch(console.dir);
+};
