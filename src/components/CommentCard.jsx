@@ -8,7 +8,6 @@ class CommentCard extends Component {
       this.setState({ deleted: true });
     });
   };
-
   render() {
     const { comment_id, created_at, author, votes, body } = this.props;
     if (this.state.deleted) {

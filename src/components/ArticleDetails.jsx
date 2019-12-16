@@ -16,6 +16,7 @@ class ArticleDetails extends Component {
   render() {
     if (this.state.isLoading) return <Loader />;
     const {
+      article_id,
       title,
       body,
       votes,
