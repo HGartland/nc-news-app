@@ -28,3 +28,13 @@ exports.getCommentsByArticleID = article_id => {
       return data.comments;
     });
 };
+
+exports.postComment = (article_id, newComment) => {
+  console.log(newComment);
+  return axios
+    .post(`${urlStart}/articles/${article_id}/comments`, newComment)
+    .then(({ data }) => {
+      return data.comment;
+    })
+    .catch(console.dir);
+};

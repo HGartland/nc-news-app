@@ -33,7 +33,10 @@ class ArticleDetails extends Component {
           </p>
           <section>{body}</section>
         </section>
-        <CommentsList article_id={this.props.article_id} />
+        <CommentsList
+          username={this.props.username}
+          article_id={this.props.article_id}
+        />
       </main>
     );
   }

@@ -1,28 +1,34 @@
 import React, { Component } from "react";
+import * as api from "../utils/api";
 
 class CommentForm extends Component {
   state = {
-    comment: {
-      votes: 0,
-      author: "USERNAME_HERE",
-      created_at: "JUST NOW",
-      body: ""
-    }
+    comment: ""
   };
   handleSubmit = event => {
     event.preventDefault();
-    this.props.addComment(this.state.comment);
+    const newComment = {
+      username: this.props.username,
+      body: this.state.comment
+    };
+    api.postComment(this.props.article_id, newComment).then(comment => {
+      this.props.addComment(comment);
+      this.setState({ comment: "" });
+    });
   };
   handleChange = event => {
-    const comment = { ...this.state.comment };
-    comment.body = event.target.value;
-    this.setState({ comment });
+    this.setState({ comment: event.target.value });
   };
+
   render() {
     return (
       <form className="Comment-form">
         <h5>New Comment:</h5>
-        <textarea onChange={this.handleChange} cols={200}></textarea>
+        <textarea
+          onChange={this.handleChange}
+          default={this.state.comment}
+          cols={200}
+        ></textarea>
         <button onClick={this.handleSubmit}>Submit</button>
       </form>
     );
