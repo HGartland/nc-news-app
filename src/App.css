@@ -13,6 +13,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.App-title {
+  display: flex;
+  color: white;
+}
+a {
+  text-decoration: none;
+}
 .Error-display {
   border-color: #6c7079;
   border-width: 2px;
