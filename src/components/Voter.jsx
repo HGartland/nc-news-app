@@ -19,6 +19,7 @@ class Voter extends Component {
     const { votes } = this.props;
     return (
       <div>
+        votes:{" "}
         <button
           onClick={() => {
             this.vote(1);

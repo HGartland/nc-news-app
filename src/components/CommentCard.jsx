@@ -19,14 +19,16 @@ class CommentCard extends Component {
         <h5>
           created by: {author} on {created_at}
         </h5>
-        <p>{body}</p>
-        <Voter type={"comments"} id={comment_id} votes={votes} />
+        <body>{body}</body>
+        <p className="Card-buttons">
+          <Voter type={"comments"} id={comment_id} votes={votes} />
 
-        {this.props.username === author && (
-          <button onClick={this.handleDel} id={comment_id}>
-            Delete
-          </button>
-        )}
+          {this.props.username === author && (
+            <button onClick={this.handleDel} id={comment_id}>
+              Delete
+            </button>
+          )}
+        </p>
       </section>
     );
   }

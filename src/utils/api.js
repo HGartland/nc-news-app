@@ -38,7 +38,7 @@ exports.postComment = (article_id, newComment) => {
 };
 
 exports.deleteComment = comment_id => {
-  return axios.delete(`${urlStart}/comments/${comment_id}`).catch(console.dir);
+  return axios.delete(`${urlStart}/comments/${comment_id}`);
 };
 
 exports.patchVotes = (type, id, votes) => {
