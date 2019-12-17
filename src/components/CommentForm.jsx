@@ -21,9 +21,11 @@ class CommentForm extends Component {
           this.props.addComment(comment);
         })
         .then(() => {
-          setTimeout(() => {
-            this.setState({ paused: false });
-          }, 500);
+          this.setState({ comment: "", paused: false });
+        })
+        .catch(err => {
+          alert("no response from server, please try again later");
+          this.setState({ paused: false });
         });
     }
   };
