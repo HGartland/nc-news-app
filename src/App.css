@@ -57,3 +57,9 @@
   border-style: solid;
   background-color: rgb(245, 237, 237);
 }
+.Nav-bar {
+  border-color: #6c7079;
+  border-width: 2px;
+  border-style: solid;
+  background-color: white;
+}

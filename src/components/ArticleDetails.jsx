@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Loader from "./Loader";
+import Loader from "react-loader-spinner";
 import * as api from "../utils/api";
 import CommentsList from "./CommentsList";
 import ErrorDisplay from "./ErrorDisplay";
@@ -29,7 +29,17 @@ class ArticleDetails extends Component {
         />
       );
     }
-    if (this.state.isLoading) return <Loader />;
+    if (this.state.isLoading)
+      return (
+        <Loader
+          className="test"
+          type="Puff"
+          color="white"
+          height={100}
+          width={100}
+          timeout={3000}
+        />
+      );
     const {
       title,
       body,

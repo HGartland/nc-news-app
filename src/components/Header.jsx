@@ -1,5 +1,4 @@
 import React from "react";
-
 const Header = ({ username }) => {
   return (
     <header className="App-header">

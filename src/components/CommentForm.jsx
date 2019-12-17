@@ -13,18 +13,19 @@ class CommentForm extends Component {
       body: this.state.comment
     };
     if (/^\s+$/.test(this.state.comment)) alert("comments must not be empty");
-    else if (this.state.comment.length > 0)
+    else if (this.state.comment.length > 0) {
+      this.setState({ paused: true });
       api
         .postComment(this.props.article_id, newComment)
         .then(comment => {
           this.props.addComment(comment);
-          this.setState({ comment: "", paused: true });
         })
         .then(() => {
           setTimeout(() => {
             this.setState({ paused: false });
-          }, 1000);
+          }, 500);
         });
+    }
   };
   handleChange = event => {
     this.setState({ comment: event.target.value });

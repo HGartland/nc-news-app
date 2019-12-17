@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
-import Loader from "./Loader";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
 import * as api from "../utils/api";
 import ErrorDisplay from "./ErrorDisplay";
 
@@ -38,7 +39,17 @@ class ArticlesList extends Component {
           status={this.state.err.response.status}
         />
       );
-    if (this.state.isLoading) return <Loader />;
+    if (this.state.isLoading)
+      return (
+        <Loader
+          className="test"
+          type="Puff"
+          color="white"
+          height={100}
+          width={100}
+          timeout={3000}
+        />
+      );
     return (
       <section>
         <aside className="Article-sorter">

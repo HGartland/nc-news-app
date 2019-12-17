@@ -5,9 +5,14 @@ import Voter from "./Voter";
 class CommentCard extends Component {
   state = { deleted: false };
   handleDel = event => {
-    api.deleteComment(event.target.id).then(() => {
-      this.setState({ deleted: true });
-    });
+    api
+      .deleteComment(event.target.id)
+      .then(() => {
+        this.setState({ deleted: true });
+      })
+      .catch(err => {
+        alert("no response from server, please try again later");
+      });
   };
   render() {
     const { comment_id, created_at, author, votes, body } = this.props;
