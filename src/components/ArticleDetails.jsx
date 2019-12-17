@@ -42,7 +42,7 @@ class ArticleDetails extends Component {
       <main>
         <section className="Article-details">
           <h2>{title}</h2>
-          <Voter id={this.props.article_id} votes={votes} />
+          <Voter type={"articles"} id={this.props.article_id} votes={votes} />
           <p>
             created by: {author} on {created_at} in topic: {topic}
           </p>

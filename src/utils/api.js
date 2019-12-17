@@ -42,5 +42,6 @@ exports.deleteComment = comment_id => {
 };
 
 exports.patchVotes = (type, id, votes) => {
-  console.log(type, id, votes);
+  const voteObj = type === "articles" ? { inc_votes: votes } : { votes };
+  return axios.patch(`${urlStart}/${type}/${id}`, voteObj);
 };

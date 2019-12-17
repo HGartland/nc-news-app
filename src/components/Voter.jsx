@@ -3,11 +3,11 @@ import * as api from "../utils/api";
 
 class Voter extends Component {
   state = { change: 0 };
-  vote = votes => {
+  vote = addedVotes => {
     this.setState(currentState => {
-      return { change: currentState.change + votes };
+      return { change: currentState.change + addedVotes };
     });
-    api.patchVotes(this.props.type, this.props.id, votes);
+    api.patchVotes(this.props.type, this.props.id, addedVotes);
   };
   render() {
     const { change } = this.state;
@@ -19,6 +19,7 @@ class Voter extends Component {
             this.vote(1);
           }}
           name="1"
+          disabled={change > 0}
         >
           +1
         </button>{" "}
@@ -28,6 +29,7 @@ class Voter extends Component {
             this.vote(-1);
           }}
           name="-1"
+          disabled={change < 0}
         >
           -1
         </button>
