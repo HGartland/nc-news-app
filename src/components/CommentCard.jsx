@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
+import Voter from "./Voter";
 
 class CommentCard extends Component {
   state = { deleted: false };
@@ -15,11 +16,12 @@ class CommentCard extends Component {
     }
     return (
       <section className="Article-card">
-        <p>score: {votes}</p>
         <h5>
           created by: {author} on {created_at}
         </h5>
         <p>{body}</p>
+        <Voter type={"comments"} id={comment_id} votes={votes} />
+
         {this.props.username === author && (
           <button onClick={this.handleDel} id={comment_id}>
             Delete
