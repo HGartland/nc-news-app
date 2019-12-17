@@ -7,7 +7,12 @@ class Voter extends Component {
     this.setState(currentState => {
       return { change: currentState.change + addedVotes };
     });
-    api.patchVotes(this.props.type, this.props.id, addedVotes);
+    api.patchVotes(this.props.type, this.props.id, addedVotes).catch(err => {
+      this.setState(currentState => {
+        return { change: currentState.change - addedVotes };
+      });
+      alert("no response from server, please try again later");
+    });
   };
   render() {
     const { change } = this.state;
