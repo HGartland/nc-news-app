@@ -13,6 +13,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+.Error-display {
+  border-color: #6c7079;
+  border-width: 2px;
+  border-style: solid;
+  background-color: white;
+}
 
 .Article-card {
   border-color: #6c7079;

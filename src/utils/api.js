@@ -30,13 +30,11 @@ exports.getCommentsByArticleID = article_id => {
 };
 
 exports.postComment = (article_id, newComment) => {
-  console.log(newComment);
   return axios
     .post(`${urlStart}/articles/${article_id}/comments`, newComment)
     .then(({ data }) => {
       return data.comment;
-    })
-    .catch(console.dir);
+    });
 };
 
 exports.deleteComment = comment_id => {

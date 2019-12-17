@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
 import Loader from "./Loader";
 import * as api from "../utils/api";
+import ErrorDisplay from "./ErrorDisplay";
 
 class ArticlesList extends Component {
   state = { articles: [], isLoading: true, sort_by: "created_at" };
@@ -17,15 +18,26 @@ class ArticlesList extends Component {
     }
   }
   fetchArticles = () => {
-    api.getArticles(this.props.topic, this.state.sort_by).then(articles => {
-      this.setState({ articles, isLoading: false });
-    });
+    api
+      .getArticles(this.props.topic, this.state.sort_by)
+      .then(articles => {
+        this.setState({ articles, isLoading: false, err: false });
+      })
+      .catch(err => {
+        this.setState({ err });
+      });
   };
   handleSorter = event => {
-    console.log(event.target.value);
     this.setState({ sort_by: event.target.value });
   };
   render() {
+    if (this.state.err)
+      return (
+        <ErrorDisplay
+          msg={this.state.err.response.data.msg}
+          status={this.state.err.response.status}
+        />
+      );
     if (this.state.isLoading) return <Loader />;
     return (
       <section>

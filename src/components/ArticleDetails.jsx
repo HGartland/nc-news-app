@@ -2,21 +2,34 @@ import React, { Component } from "react";
 import Loader from "./Loader";
 import * as api from "../utils/api";
 import CommentsList from "./CommentsList";
+import ErrorDisplay from "./ErrorDisplay";
 
 class ArticleDetails extends Component {
-  state = { article: {}, isLoading: true };
+  state = { article: {}, isLoading: true, err: false };
   componentDidMount() {
     this.fetchArticle(this.props.article_id);
   }
   fetchArticle = article_id => {
-    api.getSingleArticle(article_id).then(article => {
-      this.setState({ article, isLoading: false });
-    });
+    api
+      .getSingleArticle(article_id)
+      .then(article => {
+        this.setState({ article, isLoading: false, err: false });
+      })
+      .catch(err => {
+        this.setState({ err });
+      });
   };
   render() {
+    if (this.state.err) {
+      return (
+        <ErrorDisplay
+          msg={this.state.err.response.data.msg}
+          status={this.state.err.response.status}
+        />
+      );
+    }
     if (this.state.isLoading) return <Loader />;
     const {
-      article_id,
       title,
       body,
       votes,

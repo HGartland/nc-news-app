@@ -11,10 +11,12 @@ class CommentForm extends Component {
       username: this.props.username,
       body: this.state.comment
     };
-    api.postComment(this.props.article_id, newComment).then(comment => {
-      this.props.addComment(comment);
-      this.setState({ comment: "" });
-    });
+    if (/^\s+$/.test(this.state.comment)) alert("comments must not be empty");
+    if (this.state.comment.length > 0 && !/^\s+$/.test(this.state.comment))
+      api.postComment(this.props.article_id, newComment).then(comment => {
+        this.props.addComment(comment);
+        this.setState({ comment: "" });
+      });
   };
   handleChange = event => {
     this.setState({ comment: event.target.value });
@@ -26,7 +28,7 @@ class CommentForm extends Component {
         <h5>New Comment:</h5>
         <textarea
           onChange={this.handleChange}
-          default={this.state.comment}
+          value={this.state.comment}
           cols={190}
         ></textarea>
         <button onClick={this.handleSubmit}>Submit</button>

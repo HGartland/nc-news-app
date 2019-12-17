@@ -25,6 +25,11 @@ class CommentsList extends Component {
     if (this.state.isLoading) return <Loader />;
     return (
       <ul className="Comments-list">
+        <CommentForm
+          username={this.props.username}
+          article_id={this.props.article_id}
+          addComment={this.addComment}
+        />
         Comments:{" "}
         {this.state.comments.map(comment => {
           return (
@@ -36,11 +41,6 @@ class CommentsList extends Component {
             />
           );
         })}
-        <CommentForm
-          username={this.props.username}
-          article_id={this.props.article_id}
-          addComment={this.addComment}
-        />
       </ul>
     );
   }
