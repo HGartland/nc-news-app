@@ -3,6 +3,7 @@ import Loader from "./Loader";
 import * as api from "../utils/api";
 import CommentsList from "./CommentsList";
 import ErrorDisplay from "./ErrorDisplay";
+import Voter from "./Voter";
 
 class ArticleDetails extends Component {
   state = { article: {}, isLoading: true, err: false };
@@ -41,7 +42,7 @@ class ArticleDetails extends Component {
       <main>
         <section className="Article-details">
           <h2>{title}</h2>
-          <aside>Rating:{votes}</aside>
+          <Voter id={this.props.article_id} votes={votes} />
           <p>
             created by: {author} on {created_at} in topic: {topic}
           </p>

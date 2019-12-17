@@ -40,3 +40,7 @@ exports.postComment = (article_id, newComment) => {
 exports.deleteComment = comment_id => {
   return axios.delete(`${urlStart}/comments/${comment_id}`).catch(console.dir);
 };
+
+exports.patchVotes = (type, id, votes) => {
+  console.log(type, id, votes);
+};
