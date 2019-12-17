@@ -3,7 +3,8 @@ import * as api from "../utils/api";
 
 class CommentForm extends Component {
   state = {
-    comment: ""
+    comment: "",
+    paused: false
   };
   handleSubmit = event => {
     event.preventDefault();
@@ -12,11 +13,18 @@ class CommentForm extends Component {
       body: this.state.comment
     };
     if (/^\s+$/.test(this.state.comment)) alert("comments must not be empty");
-    if (this.state.comment.length > 0 && !/^\s+$/.test(this.state.comment))
-      api.postComment(this.props.article_id, newComment).then(comment => {
-        this.props.addComment(comment);
-        this.setState({ comment: "" });
-      });
+    else if (this.state.comment.length > 0)
+      api
+        .postComment(this.props.article_id, newComment)
+        .then(comment => {
+          this.props.addComment(comment);
+          this.setState({ comment: "", paused: true });
+        })
+        .then(() => {
+          setTimeout(() => {
+            this.setState({ paused: false });
+          }, 1000);
+        });
   };
   handleChange = event => {
     this.setState({ comment: event.target.value });
@@ -31,7 +39,9 @@ class CommentForm extends Component {
           value={this.state.comment}
           cols={190}
         ></textarea>
-        <button onClick={this.handleSubmit}>Submit</button>
+        <button onClick={this.handleSubmit} disabled={this.state.paused}>
+          Submit
+        </button>
       </form>
     );
   }
