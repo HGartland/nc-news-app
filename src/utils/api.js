@@ -7,9 +7,9 @@ exports.getAllTopics = () => {
   });
 };
 
-exports.getArticles = (topic, sort_by) => {
+exports.getArticles = (topic, sort_by, p) => {
   return axios
-    .get(`${urlStart}/articles`, { params: { topic, sort_by } })
+    .get(`${urlStart}/articles`, { params: { topic, sort_by, p, limit: 5 } })
     .then(({ data }) => {
       return data.articles;
     });

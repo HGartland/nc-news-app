@@ -6,7 +6,7 @@ import * as api from "../utils/api";
 import ErrorDisplay from "./ErrorDisplay";
 
 class ArticlesList extends Component {
-  state = { articles: [], isLoading: true, sort_by: "created_at" };
+  state = { articles: [], isLoading: true, sort_by: "created_at", page: 1 };
   componentDidMount() {
     this.fetchArticles();
   }
@@ -20,7 +20,7 @@ class ArticlesList extends Component {
   }
   fetchArticles = () => {
     api
-      .getArticles(this.props.topic, this.state.sort_by)
+      .getArticles(this.props.topic, this.state.sort_by, this.state.page)
       .then(articles => {
         this.setState({ articles, isLoading: false, err: false });
       })
