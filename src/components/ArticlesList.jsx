@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import ArticleCard from "./ArticleCard";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import Loader from "react-loader-spinner";
 import * as api from "../utils/api";
 import ErrorDisplay from "./ErrorDisplay";
+import LoaderDisplay from "./Loader";
 
 class ArticlesList extends Component {
   state = { articles: [], isLoading: true, sort_by: "created_at", page: 1 };
@@ -13,7 +12,8 @@ class ArticlesList extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (
       this.props.topic !== prevProps.topic ||
-      this.state.sort_by !== prevState.sort_by
+      this.state.sort_by !== prevState.sort_by ||
+      this.state.page !== prevState.page
     ) {
       this.fetchArticles();
     }
@@ -31,6 +31,12 @@ class ArticlesList extends Component {
   handleSorter = event => {
     this.setState({ sort_by: event.target.value });
   };
+  handlePage = event => {
+    const change = event.target.name;
+    this.setState(currentState => {
+      return { page: currentState.page + +change };
+    });
+  };
   render() {
     if (this.state.err)
       return (
@@ -39,17 +45,7 @@ class ArticlesList extends Component {
           status={this.state.err.response.status}
         />
       );
-    if (this.state.isLoading)
-      return (
-        <Loader
-          className="test"
-          type="Puff"
-          color="white"
-          height={100}
-          width={100}
-          timeout={3000}
-        />
-      );
+    if (this.state.isLoading) return <LoaderDisplay />;
     return (
       <section className="Articles-container">
         <aside className="Article-sorter">
@@ -59,6 +55,14 @@ class ArticlesList extends Component {
             <option value="comments_count">number of comments</option>
             <option value="votes">score</option>
           </select>
+          {this.state.page > 1 && (
+            <button onClick={this.handlePage} name="-1">
+              prev
+            </button>
+          )}
+          <button onClick={this.handlePage} name={1}>
+            next
+          </button>
         </aside>
         <ul className="Articles-list">
           {this.state.articles.map(article => {

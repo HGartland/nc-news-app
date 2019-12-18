@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Loader from "./Loader";
 import * as api from "../utils/api";
 import CommentCard from "./CommentCard";
 import CommentForm from "./CommentForm";
+import LoaderDisplay from "./Loader";
 
 class CommentsList extends Component {
   state = { comments: [], isLoading: true };
@@ -18,11 +18,8 @@ class CommentsList extends Component {
     const newComments = [newComment, ...this.state.comments];
     this.setState({ comments: newComments, isLoading: false });
   };
-  deleteComment = comment_id => {
-    console.log(comment_id);
-  };
   render() {
-    if (this.state.isLoading) return <Loader />;
+    if (this.state.isLoading) return <LoaderDisplay />;
     return (
       <ul className="Comments-list">
         <CommentForm
@@ -35,7 +32,6 @@ class CommentsList extends Component {
           return (
             <CommentCard
               {...comment}
-              deleteComment={this.deleteComment}
               key={comment.comment_id}
               username={this.props.username}
             />
