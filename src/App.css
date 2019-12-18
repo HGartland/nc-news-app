@@ -1,20 +1,23 @@
 .App {
   text-align: center;
   background-image: url("https://img.pixers.pics/pho_wat(s3:700/FO/12/72/78/17/7/700_FO127278177_5c458c1879c800e08a3a593faaefa831.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/door-stickers-the-pattern-of-mandalas-and-paisley-pattern-in-indian-style.jpg.jpg");
+  background-repeat: repeat;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 20;
+  min-height: 20%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
   font-size: calc(10px + 2vmin);
+  flex-wrap: wrap;
   color: white;
 }
 .App-title {
-  display: flex;
+  min-width: 55%;
+  align-self: stretch;
   color: white;
 }
 a {
@@ -44,6 +47,7 @@ a {
   border-width: 2px;
   border-style: solid;
   background-color: white;
+  flex-basis: ;
 }
 .Article-sorter {
   border-color: #6c7079;
@@ -69,4 +73,13 @@ a {
   border-width: 2px;
   border-style: solid;
   background-color: white;
+}
+.Articles-container {
+  display: flex;
+  flex-direction: column;
+}
+.Articles-list {
+  display: grid;
+  padding-left: 10px;
+  padding-right: 10px;
 }

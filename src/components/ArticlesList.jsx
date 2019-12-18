@@ -51,7 +51,7 @@ class ArticlesList extends Component {
         />
       );
     return (
-      <section>
+      <section className="Articles-container">
         <aside className="Article-sorter">
           Sort by:
           <select onChange={this.handleSorter}>
@@ -60,7 +60,7 @@ class ArticlesList extends Component {
             <option value="votes">score</option>
           </select>
         </aside>
-        <ul>
+        <ul className="Articles-list">
           {this.state.articles.map(article => {
             return <ArticleCard {...article} key={article.article_id} />;
           })}
