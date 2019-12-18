@@ -24,8 +24,8 @@ class CommentCard extends Component {
         <h5>
           created by: {author} on {created_at}
         </h5>
-        <body>{body}</body>
-        <p className="Card-buttons">
+        <section>{body}</section>
+        <div className="Card-buttons">
           <Voter type={"comments"} id={comment_id} votes={votes} />
 
           {this.props.username === author && (
@@ -33,7 +33,7 @@ class CommentCard extends Component {
               Delete
             </button>
           )}
-        </p>
+        </div>
       </section>
     );
   }
