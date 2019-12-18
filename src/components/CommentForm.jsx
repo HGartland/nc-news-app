@@ -38,9 +38,9 @@ class CommentForm extends Component {
       <form className="Comment-form" onSubmit={this.handleSubmit}>
         <h5>New Comment:</h5>
         <textarea
+          className="Text-input"
           onChange={this.handleChange}
           value={this.state.comment}
-          cols={190}
           required
         ></textarea>
         <button disabled={this.state.paused}>Submit</button>

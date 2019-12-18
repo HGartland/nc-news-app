@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@reach/router";
 
 const ErrorDisplay = ({ status, msg }) => {
   return (
@@ -7,9 +6,9 @@ const ErrorDisplay = ({ status, msg }) => {
       <h3>
         Error: {status} - {msg}
       </h3>
-      <Link to="/">
+      <a href={"/"}>
         <button>Return to homepage</button>
-      </Link>
+      </a>
     </article>
   );
 };

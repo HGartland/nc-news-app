@@ -46,7 +46,7 @@ class ArticleDetails extends Component {
           <p>
             created by: {author} on {created_at} in topic: {topic}
           </p>
-          <section>{body}</section>
+          <section className="Article-body">{body}</section>
         </section>
         <CommentsList
           username={this.props.username}

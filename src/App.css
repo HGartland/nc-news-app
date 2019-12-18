@@ -1,11 +1,11 @@
 .App {
   text-align: center;
-  background-image: url("https://img.pixers.pics/pho_wat(s3:700/FO/12/72/78/17/7/700_FO127278177_5c458c1879c800e08a3a593faaefa831.jpg,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/door-stickers-the-pattern-of-mandalas-and-paisley-pattern-in-indian-style.jpg.jpg");
+  background-color: #ededed;
   background-repeat: repeat;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #202829;
   min-height: 20%;
   display: flex;
   flex-direction: row;
@@ -14,14 +14,50 @@
   font-size: calc(10px + 2vmin);
   flex-wrap: wrap;
   color: white;
+  box-shadow: 20px 20px 50px rgb(8, 8, 8);
 }
 .App-title {
   min-width: 55%;
-  align-self: stretch;
+  align-self: center;
   color: white;
+}
+.Title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 5vw;
+  max-height: 30%;
+  margin-left: 5vw;
+  margin-bottom: 5;
+}
+.Sub-title {
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+  margin-top: 0;
+  margin-left: 6vw;
+  text-align: left;
+  font-size: 25px;
+  font-weight: 100;
+}
+.Red-start {
+  margin-right: 1%;
+  color: #ba1f31 !important;
+}
+.Red-end {
+  color: #ba1f31 !important;
+  margin-left: 2%;
 }
 a {
   text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: #ba1f31;
+}
+:visited {
+  color: inherit;
 }
 .Error-display {
   border-color: #6c7079;
@@ -41,13 +77,17 @@ a {
   border-width: 2px;
   border-style: solid;
   background-color: white;
+  padding: 2px;
+}
+.Article-body {
+  text-align: left;
+  margin: 2%;
 }
 .Comment-card {
   border-color: #6c7079;
   border-width: 2px;
   border-style: solid;
   background-color: white;
-  flex-basis: ;
 }
 .Article-sorter {
   border-color: #6c7079;
@@ -70,9 +110,18 @@ a {
 }
 .Nav-bar {
   border-color: #6c7079;
-  border-width: 2px;
-  border-style: solid;
-  background-color: white;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  background-color: #202829;
+  position: sticky;
+  color: white;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2px;
+  align-items: center;
+  font-size: calc(10px + 1vmin);
+  font-weight: 100;
 }
 .Articles-container {
   display: flex;
@@ -82,4 +131,37 @@ a {
   display: grid;
   padding-left: 10px;
   padding-right: 10px;
+}
+.User-link {
+  position: sticky;
+  top: 0;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.Nav-button {
+  background-color: #ba1f31;
+  border: ridge 0;
+  border-radius: 8px;
+  margin: 3px;
+  color: white;
+  min-height: 30px;
+  max-height: 20px;
+  min-width: fit-content;
+  flex-grow: 1;
+  max-width: 400px;
+  font-size: calc(10px + 0.8vw);
+  font-weight: 100;
+  width: 20vw;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.Nav-button:hover {
+  background-color: rgb(253, 253, 253);
+  color: #ba1f31;
+}
+.Text-input {
+  width: 80%;
+  border-width: 0;
+  border-style: ridge;
+  border-radius: 3px;
 }

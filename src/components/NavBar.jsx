@@ -26,12 +26,16 @@ class NavBar extends Component {
           const slug = topic.slug;
           return (
             <Link to={`/topics/${slug}`} key={slug}>
-              <button>{slug}</button>
+              <button className="Nav-button">
+                <span>{`<${slug}/>`}</span>{" "}
+              </button>
             </Link>
           );
         })}
         <Link to={`/`}>
-          <button>all</button>
+          <button className="Nav-button">
+            <span>{"< all />"}</span>
+          </button>
         </Link>
       </section>
     );
