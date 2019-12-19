@@ -5,7 +5,13 @@ import ErrorDisplay from "./ErrorDisplay";
 import LoaderDisplay from "./Loader";
 
 class ArticlesList extends Component {
-  state = { articles: [], isLoading: true, sort_by: "created_at", page: 1 };
+  state = {
+    articles: [],
+    isLoading: true,
+    sort_by: "created_at",
+    page: 1,
+    total: 1
+  };
   componentDidMount() {
     this.fetchArticles();
   }
@@ -21,8 +27,8 @@ class ArticlesList extends Component {
   fetchArticles = () => {
     api
       .getArticles(this.props.topic, this.state.sort_by, this.state.page)
-      .then(articles => {
-        this.setState({ articles, isLoading: false, err: false });
+      .then(({ articles, total }) => {
+        this.setState({ articles, isLoading: false, err: false, total });
       })
       .catch(err => {
         this.setState({ err });
@@ -55,16 +61,24 @@ class ArticlesList extends Component {
             <option value="comments_count">number of comments</option>
             <option value="votes">score</option>
           </select>
-          {this.state.page > 1 && (
-            <button className="Sort-button" onClick={this.handlePage} name="-1">
-              prev
-            </button>
-          )}
-          <button onClick={this.handlePage} name={1} className="Sort-button">
+          <button
+            className="Sort-button"
+            onClick={this.handlePage}
+            disabled={this.state.page === 1}
+            name={-1}
+          >
+            prev
+          </button>
+          <button
+            onClick={this.handlePage}
+            disabled={this.state.page >= this.state.total / 8}
+            name={1}
+            className="Sort-button"
+          >
             next
           </button>
         </aside>
-        <h1 className="Sortby-title">{`< ${this.props.topic || "all"} />`}</h1>
+        <h1>{`< ${this.props.topic || "all"} />`}</h1>
         <ul className="Articles-list">
           {this.state.articles.map(article => {
             return <ArticleCard {...article} key={article.article_id} />;

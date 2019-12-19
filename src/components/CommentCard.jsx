@@ -18,7 +18,7 @@ class CommentCard extends Component {
   render() {
     const { comment_id, created_at, author, votes, body } = this.props;
     if (this.state.deleted) {
-      return <section className="Article-card">Comment Removed</section>;
+      return <strong className="Article-card">Comment Removed</strong>;
     }
     return (
       <section className="Comment-card">
