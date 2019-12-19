@@ -18,7 +18,7 @@ class Voter extends Component {
     const { change } = this.state;
     const { votes } = this.props;
     return (
-      <div>
+      <div className="Voter">
         votes:{" "}
         <button
           onClick={() => {

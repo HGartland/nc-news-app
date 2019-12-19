@@ -48,22 +48,23 @@ class ArticlesList extends Component {
     if (this.state.isLoading) return <LoaderDisplay />;
     return (
       <section className="Articles-container">
-        <aside className="Article-sorter">
-          Sort by:
-          <select onChange={this.handleSorter}>
+        <aside className="Article-filter">
+          <p>Sort by :</p>
+          <select onChange={this.handleSorter} className="Sort-button">
             <option value="created_at">date created</option>
             <option value="comments_count">number of comments</option>
             <option value="votes">score</option>
           </select>
           {this.state.page > 1 && (
-            <button onClick={this.handlePage} name="-1">
+            <button className="Sort-button" onClick={this.handlePage} name="-1">
               prev
             </button>
           )}
-          <button onClick={this.handlePage} name={1}>
+          <button onClick={this.handlePage} name={1} className="Sort-button">
             next
           </button>
         </aside>
+        <h1 className="Sortby-title">{`< ${this.props.topic || "all"} />`}</h1>
         <ul className="Articles-list">
           {this.state.articles.map(article => {
             return <ArticleCard {...article} key={article.article_id} />;

@@ -21,7 +21,7 @@ class CommentCard extends Component {
       return <section className="Article-card">Comment Removed</section>;
     }
     return (
-      <section className="Article-card">
+      <section className="Comment-card">
         <h5>
           created by: {author} on {moment(created_at).format("LLL")}
         </h5>

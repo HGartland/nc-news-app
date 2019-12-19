@@ -73,12 +73,6 @@ a:hover {
   background-color: white;
 }
 
-.Article-card {
-  border-color: #6c7079;
-  border-width: 2px;
-  border-style: solid;
-  background-color: white;
-}
 .Article-details {
   border-color: #6c7079;
   border-width: 2px;
@@ -90,30 +84,46 @@ a:hover {
   text-align: left;
   margin: 2%;
 }
+.Article-card {
+  border-color: #6c7079;
+  border-width: 2px;
+  border-style: solid;
+  background-color: white;
+  margin: 2px;
+  padding: 5px;
+}
 .Comment-card {
   border-color: #6c7079;
   border-width: 2px;
   border-style: solid;
   background-color: white;
+  margin: 2px;
+  padding: calc(2px + 1vw);
 }
-.Article-sorter {
-  border-color: #6c7079;
-  border-width: 2px;
-  border-style: solid;
-  background-color: white;
+.Comment-card section {
+  text-align: left;
 }
 
 .Comments-list {
-  border-color: #6c7079;
-  border-width: 2px;
-  border-style: solid;
-  background-color: white;
+  display: grid;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .Comment-form {
   border-color: #6c7079;
+  color: white;
   border-width: 4px;
   border-style: solid;
-  background-color: rgb(245, 237, 237);
+  background-color: #202829;
+  margin-bottom: 10px;
+  display: grid;
+}
+.Text-input {
+  width: 80%;
+  margin: 2px;
+  border-width: 3;
+  border-style: ridge;
+  border-radius: 3px;
 }
 .Nav-bar {
   border-color: #6c7079;
@@ -130,6 +140,24 @@ a:hover {
   font-size: calc(10px + 1vmin);
   font-weight: 100;
 }
+.Article-filter {
+  border-color: #6c7079;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  background-color: #202829;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  align-items: center;
+  font-size: calc(8px + 1vmin);
+  font-weight: 100;
+  flex-wrap: wrap;
+}
+.Article-filter p {
+  margin: 0;
+}
 .Articles-container {
   display: flex;
   flex-direction: column;
@@ -139,20 +167,50 @@ a:hover {
   padding-left: 10px;
   padding-right: 10px;
 }
+.Articles-container h1 {
+  font-size: calc(12px + 3vmin);
+}
 .User-link {
   position: sticky;
   top: 0;
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.Sort-button {
+  background-color: #ba1f31;
+  font-size: calc(8px + 1vmin);
+  border: ridge 0;
+  border-radius: 8px;
+  color: white;
+  min-height: fit-content;
+  max-height: 2em;
+  min-width: fit-content;
+  max-width: 20vw;
+  font-weight: 100;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  text-align-last: center;
+  margin: 3px;
+}
+button.Sort-button {
+  max-width: 10vw;
+}
+.Sort-button:hover {
+  background-color: rgb(253, 253, 253);
+  color: #ba1f31;
+}
+.Sort-button:hover:after {
+  background-color: rgb(253, 253, 253);
+  color: #a06b71;
+}
+
 .Nav-button {
   background-color: #ba1f31;
   border: ridge 0;
   border-radius: 8px;
   margin: 3px;
   color: white;
-  min-height: 30px;
-  max-height: 20px;
+  min-height: fit-content;
   min-width: fit-content;
   flex-grow: 1;
   max-width: 400px;
@@ -166,9 +224,7 @@ a:hover {
   background-color: rgb(253, 253, 253);
   color: #ba1f31;
 }
-.Text-input {
-  width: 80%;
-  border-width: 0;
-  border-style: ridge;
-  border-radius: 3px;
+
+.Voter {
+  margin: 8px;
 }
