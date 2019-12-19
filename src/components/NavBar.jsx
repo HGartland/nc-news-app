@@ -21,7 +21,6 @@ class NavBar extends Component {
     if (this.state.isLoading) return <Loader />;
     return (
       <section className="Nav-bar">
-        Topics:
         {this.state.topics.map(topic => {
           const slug = topic.slug;
           return (

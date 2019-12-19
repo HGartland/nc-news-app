@@ -11,7 +11,7 @@ const Header = ({ username }) => {
           </h2>
         </Link>
         <p className="Sub-title">
-          all the latest discussions in Northcoders Leeds
+          All the latest discussions in Northcoders Leeds
         </p>
       </div>
 

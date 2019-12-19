@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import Voter from "./Voter";
+import moment from "moment";
 
 class CommentCard extends Component {
   state = { deleted: false };
@@ -22,7 +23,7 @@ class CommentCard extends Component {
     return (
       <section className="Article-card">
         <h5>
-          created by: {author} on {created_at}
+          created by: {author} on {moment(created_at).format("LLL")}
         </h5>
         <section>{body}</section>
         <div className="Card-buttons">

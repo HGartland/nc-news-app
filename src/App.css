@@ -28,17 +28,24 @@
   justify-content: flex-start;
   margin-top: 5vw;
   max-height: 30%;
-  margin-left: 5vw;
-  margin-bottom: 5;
+  margin-left: calc(7vw);
+  margin-bottom: 1vmin;
+}
+@media (max-width: 1000px) {
+  .Title {
+    margin-right: 7vw;
+  }
+  .Sub-title {
+    margin-right: 7vw;
+  }
 }
 .Sub-title {
   display: flex;
-  justify-content: flex-start;
   align-self: flex-start;
   margin-top: 0;
-  margin-left: 6vw;
+  margin-left: 7vw;
   text-align: left;
-  font-size: 25px;
+  font-size: calc(16px + 1vmin);
   font-weight: 100;
 }
 .Red-start {

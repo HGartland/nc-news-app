@@ -4,6 +4,7 @@ import CommentsList from "./CommentsList";
 import ErrorDisplay from "./ErrorDisplay";
 import Voter from "./Voter";
 import LoaderDisplay from "./Loader";
+import moment from "moment";
 
 class ArticleDetails extends Component {
   state = { article: {}, isLoading: true, err: false };
@@ -43,9 +44,10 @@ class ArticleDetails extends Component {
         <section className="Article-details">
           <h2>{title}</h2>
           <Voter type={"articles"} id={this.props.article_id} votes={votes} />
-          <p>
-            created by: {author} on {created_at} in topic: {topic}
-          </p>
+          <h5>
+            created by: {author} on {moment(created_at).format("LLL")} in topic:{" "}
+            {topic}
+          </h5>
           <section className="Article-body">{body}</section>
         </section>
         <CommentsList
