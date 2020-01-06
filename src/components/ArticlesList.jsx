@@ -17,11 +17,12 @@ class ArticlesList extends Component {
   }
   componentDidUpdate(prevProps, prevState) {
     if (
-      this.props.topic !== prevProps.topic ||
       this.state.sort_by !== prevState.sort_by ||
       this.state.page !== prevState.page
     ) {
       this.fetchArticles();
+    } else if (this.props.topic !== prevProps.topic) {
+      this.setState({ page: 1 }, this.fetchArticles);
     }
   }
   fetchArticles = () => {
@@ -69,6 +70,8 @@ class ArticlesList extends Component {
           >
             prev
           </button>
+          <p>Page {this.state.page}</p>
+
           <button
             onClick={this.handlePage}
             disabled={this.state.page >= this.state.total / 8}

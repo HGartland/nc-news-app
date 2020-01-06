@@ -157,6 +157,9 @@ a:hover {
 }
 .Article-filter p {
   margin: 0;
+  padding-bottom: 0.2vw;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 .Articles-container {
   display: flex;

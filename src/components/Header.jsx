@@ -6,8 +6,8 @@ const Header = ({ username }) => {
       <div className="App-title">
         <Link to="/">
           <h2 className="Title">
-            <p className="Red-start">{"<"}</p>NORTHCODERS - NEWS
-            <p className="Red-end">{"/>"}</p>
+            <p className="Red-start">&lt;</p>NORTHCODERS - NEWS
+            <p className="Red-end">/&gt;</p>
           </h2>
         </Link>
         <p className="Sub-title">
